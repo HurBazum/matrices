@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-Random r = new Random(); 
+Random r = new Random();
 int[,] m_one = new int[r.Next(2, 7), r.Next(2, 7)];
 int x_pos, y_pos;
 for(int i = 0; i < m_one.GetUpperBound(0) + 1; i++)
@@ -15,6 +15,7 @@ for(int i = 0; i < m_one.GetUpperBound(0) + 1; i++)
 {
     for(int j = 0; j < m_one.GetUpperBound(1) + 1; j++)
     {
+        Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Enum.GetName(typeof(ConsoleColor), r.Next(1, 15)));
         if (j != m_one.GetUpperBound(1))
         {
             if (m_one[i, j] % 10 == m_one[i, j])
@@ -41,12 +42,18 @@ for(int i = 0; i < m_one.GetUpperBound(0) + 1; i++)
     }
     Console.Write("\n");
 }
+Console.ForegroundColor = ConsoleColor.White;
 Console.WriteLine();
 Console.WriteLine("Отрисовка матрицы с перевернутыми строками и столбцами");
 for (int i = 0; i < m_one.GetUpperBound(1) + 1; i++)
 {
     for (int j = 0; j < m_one.GetUpperBound(0) + 1; j++)
     {
+        Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Enum.GetName(typeof(ConsoleColor), r.Next(0, 15)));
+        if (Console.ForegroundColor == default)
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+        }
         if (j != m_one.GetUpperBound(0))
         {
             if (m_one[j, i] % 10 == m_one[j, i])
@@ -69,10 +76,12 @@ for (int i = 0; i < m_one.GetUpperBound(1) + 1; i++)
                 Console.Write($"{m_one[j, i]}");
             }
         }
+        Console.BackgroundColor = default;
     }
     Console.Write("\n");
 }
-Console.WriteLine(m_one.GetUpperBound(0) + " " + m_one.GetUpperBound(1));
+Console.ForegroundColor = ConsoleColor.White;
+Console.WriteLine();
 Console.WriteLine("Отрисовка массива по столбцам по очереди\nдля наглядности сделана задержка после отображения каждого элемента");
 
 y_pos = Console.CursorTop;
@@ -84,6 +93,11 @@ if (m_one.GetUpperBound(0) == m_one.GetUpperBound(1))
     {
         for (int j = 0; j < m_one.GetUpperBound(1) + 1; j++)
         {
+            Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Enum.GetName(typeof(ConsoleColor), r.Next(0, 15)));
+            if (Console.ForegroundColor == default)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+            }
             if (j != m_one.GetUpperBound(1))
             {
                 if (m_one[j, i] % 10 == m_one[j, i])
@@ -107,11 +121,13 @@ if (m_one.GetUpperBound(0) == m_one.GetUpperBound(1))
                 }
             }
             Thread.Sleep(25);
+            Console.BackgroundColor = default;
             Console.CursorTop++;
             Console.CursorLeft = x_pos;
         }
         if (i == m_one.GetUpperBound(1))
         {
+            Console.ForegroundColor = ConsoleColor.White;
             break;
         }
         Console.CursorTop = y_pos;
@@ -127,6 +143,11 @@ else
     {
         for (int j = 0; j < m_one.GetUpperBound(1) + 1 + changeSize; j++)
         {
+            Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Enum.GetName(typeof(ConsoleColor), r.Next(1, 15)));
+            if (Console.ForegroundColor == default)
+            {
+                Console.BackgroundColor = ConsoleColor.White;
+            }
             if (j != m_one.GetUpperBound(1))
             {
                 if (m_one[j, i] % 10 == m_one[j, i])
@@ -150,11 +171,13 @@ else
                 }
             }
             Thread.Sleep(25);
+            Console.BackgroundColor = default;
             Console.CursorTop++;
             Console.CursorLeft = x_pos;
         }
         if (i == m_one.GetUpperBound(0) - changeSize)
         {
+            Console.ForegroundColor = ConsoleColor.White;
             break;
         }
         Console.CursorTop = y_pos;
