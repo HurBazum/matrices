@@ -20,7 +20,7 @@ for(int i = 0; i < m_one.GetUpperBound(0) + 1; i++)
         {
             if (m_one[i, j] % 10 == m_one[i, j])
             {
-                Console.Write($"{m_one[i, j]}  ");
+                Console.Write($" {m_one[i, j]} ");
             }
             else
             {
@@ -50,18 +50,7 @@ for (int i = 0; i < m_one.GetUpperBound(1) + 1; i++)
     for (int j = 0; j < m_one.GetUpperBound(0) + 1; j++)
     {
         Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), Enum.GetName(typeof(ConsoleColor), r.Next(1, 15)));
-        if (j != m_one.GetUpperBound(0))
-        {
-            if (m_one[j, i] % 10 == m_one[j, i])
-            {
-                Console.Write($"{m_one[j, i]}  ");
-            }
-            else
-            {
-                Console.Write($"{m_one[j, i]} ");
-            }
-        }
-        else
+        if (j == m_one.GetUpperBound(0) && i == m_one.GetUpperBound(1))
         {
             if (m_one[j, i] % 10 == m_one[j, i])
             {
@@ -70,6 +59,17 @@ for (int i = 0; i < m_one.GetUpperBound(1) + 1; i++)
             else
             {
                 Console.Write($"{m_one[j, i]}");
+            }
+        }
+        else
+        {
+            if (m_one[j, i] % 10 == m_one[j, i])
+            {
+                Console.Write($" {m_one[j, i]} ");
+            }
+            else
+            {
+                Console.Write($"{m_one[j, i]} ");
             }
         }
     }
@@ -95,7 +95,7 @@ if (m_one.GetUpperBound(0) == m_one.GetUpperBound(1))
             }
             if (m_one[j, i] % 10 == m_one[j, i])
             {
-                Console.Write($"{m_one[j, i]} ");
+                Console.Write($" {m_one[j, i]}");
             }
             else
             {
@@ -131,7 +131,7 @@ else
             }
             if (m_one[j, i] % 10 == m_one[j, i])
             {
-                Console.Write($"{m_one[j, i]} ");
+                Console.Write($" {m_one[j, i]}");
             }
             else
             {
